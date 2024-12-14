@@ -1,0 +1,39 @@
+import java.util.UUID;
+
+public class UniqueIDGenerator {
+    public static void main(String[] args) {
+        UUID uuid = UUID.randomUUID();
+        System.out.println("Generated UUID: " + uuid);
+    }
+}
+
+
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class SequentialIDGenerator {
+    private static final AtomicInteger counter = new AtomicInteger(0);
+
+    public static int getNextID() {
+        return counter.incrementAndGet();
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Unique ID: " + getNextID());
+    }
+}
+
+
+
+import java.util.Random;
+
+public class TimestampIDGenerator {
+    public static void main(String[] args) {
+        long timestamp = System.currentTimeMillis();
+        Random random = new Random();
+        int randomNum = random.nextInt(1000); // Adjust as needed for the range of randomness
+
+        String uniqueID = timestamp + "-" + randomNum;
+        System.out.println("Unique ID: " + uniqueID);
+    }
+}
